@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+.pytest_cache/
+.coverage
+.coverage.*
+*.cover
+*.py,cover
+*.hypothesis/
+.pyre/
+.pytype/
+.cache
+coverage.xml
+nosetests.xml
+
+# Jupyter
+.ipynb_checkpoints
+
+# Editors / OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Local data to keep out of version control
+csv/data-es-activite.csv
+csv/data-es-activite-updated.csv
+csv/data-es-equipement.csv
+csv/data-es-equipement-updated.csv
