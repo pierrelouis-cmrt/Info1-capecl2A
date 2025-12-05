@@ -12,7 +12,7 @@ DB_NAME = 'sport'
 
 DB_URL = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
 
-TAILLE_LOT = 1000  # AJOUT: Commit tous les 1000 lignes
+TAILLE_LOT = 1000  # Commit tous les 1000 lignes
 
 # --- Configuration des Tables ---
 TABLES = [
