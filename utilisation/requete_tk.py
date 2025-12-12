@@ -50,7 +50,7 @@ class SportDBApp:
         self.root.geometry("900x600")
         self.configure_tree_style()
 
-        # Connexion SGBD
+        # Connexion
         self.url = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
         self.engine = create_engine(self.url)
         
@@ -67,7 +67,7 @@ class SportDBApp:
         self.notebook.add(self.tab_predef, text="Prédéfinies")
         self.setup_tab_predef()
 
-        # --- Onglet 2 : Builder (Assisté) ---
+        # --- Onglet 2 : Builder (Menus déroulant) ---
         self.tab_builder = ttk.Frame(self.notebook)
         self.notebook.add(self.tab_builder, text="Générateur")
         self.setup_tab_builder()
@@ -155,7 +155,7 @@ class SportDBApp:
         btn = ttk.Button(frame, text="Exécuter SQL", command=self.run_free_sql)
         btn.pack(side=tk.RIGHT)
 
-    # --- Logique Métier ---
+    # --- Logique ---
 
     def load_db_metadata(self):
         """Charge la liste des tables pour le Builder."""
@@ -268,7 +268,7 @@ class SportDBApp:
                     self.tree.heading(col, text=col)
                     self.tree.column(col, width=width, anchor="w", stretch=True)
 
-                # Insertion des données (zébrage pour la lisibilité)
+                # Insertion des données (en alternant la couleur pour la lisibilité)
                 for i, row in enumerate(rows):
                     tag = "odd" if i % 2 else "even"
                     self.tree.insert("", tk.END, values=list(row), tags=(tag,))

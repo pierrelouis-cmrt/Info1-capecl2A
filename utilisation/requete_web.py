@@ -9,14 +9,14 @@ HOST = '127.0.0.1'
 PORT = 5434
 DB_NAME = 'sport'
 
-# Configuration de l'application Flask
+# Configuration de l'app Flask
 app = Flask(__name__)
 
 # Connexion Base de Données
 db_url = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
 engine = create_engine(db_url)
 
-# --- Requêtes Prédéfinies ---
+# --- Requêtes Prédéfinies (mêmes que dans le script Tkinter) ---
 PREDEFINED_QUERIES = {
     "1": {
         "label": "Aperçu installations (5 lignes)",
@@ -62,7 +62,7 @@ PREDEFINED_QUERIES = {
     }
 }
 
-# --- TEMPLATE HTML/CSS/JS ---
+# --- TEMPLATE HTML/CSS/JS  ---
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="fr">
@@ -417,7 +417,7 @@ HTML_TEMPLATE = """
                 const distinct = document.getElementById('builder-distinct').checked;
                 const limit = document.getElementById('builder-limit').value;
 
-                // Logic Avancée
+                // Logic
                 const whereCol = document.getElementById('builder-where-col').value;
                 const whereOp = document.getElementById('builder-where-op').value;
                 const whereVal = document.getElementById('builder-where-val').value;

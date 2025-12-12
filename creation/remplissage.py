@@ -8,11 +8,11 @@ USER = 'postgres'
 PASSWORD = ''
 HOST = '127.0.0.1'
 PORT = 5434
-DB_NAME = 'sport'
+DB_NAME = 'sport' # Nom de la base à remplir
 
 DB_URL = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
 
-TAILLE_LOT = 1000  # Commit tous les 1000 lignes
+TAILLE_LOT = 1000  # Commit tous les 1000 lignes (évite les erreurs de mémoire de pyscopg2 en librérant les verrous)
 
 # --- Configuration des Tables ---
 TABLES = [
@@ -51,7 +51,7 @@ def main():
     try:
         engine = create_engine(DB_URL)
 
-        with engine.connect() as conn:  # MODIF: connect() au lieu de begin()
+        with engine.connect() as conn:
 
             for config in TABLES:
                 table_nom = config["nom_table"]
@@ -94,7 +94,7 @@ def main():
                         print("  -> Réinitialisation de la structure SQL...")
                         conn.execute(text(f'DROP TABLE IF EXISTS "{table_nom}" CASCADE'))
                         conn.execute(text(requete_creation))
-                        conn.commit()  # AJOUT: Commit après création
+                        conn.commit()
 
                         # ÉTAPE 2 : Préparation de l'insertion
                         liste_cols_propre = []
@@ -116,7 +116,7 @@ def main():
                         doublons = 0
                         erreurs_fk = 0
                         autres_erreurs = 0
-                        compteur_lot = 0  # AJOUT
+                        compteur_lot = 0
 
                         for ligne in reader:
                             
@@ -148,12 +148,11 @@ def main():
                             except Exception as e:
                                 print(f"  -> Erreur Python : {e}")
 
-                            # AJOUT: Commit par lot pour libérer les verrous
                             compteur_lot = compteur_lot + 1
                             if compteur_lot % TAILLE_LOT == 0:
                                 conn.commit()
 
-                        conn.commit()  # AJOUT: Commit final pour cette table
+                        conn.commit()
 
                         print(f"  -> FINI. Bilan :")
                         print(f"     ✅ Insérés avec succès  : {succes}")

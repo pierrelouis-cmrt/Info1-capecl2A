@@ -5,7 +5,7 @@ USER = 'postgres'
 PASSWORD = ''
 HOST = '127.0.0.1'
 PORT = 5434
-DB_TO_DROP = 'sport'  # <--- Nom de la base à supprimer (hardcodé)
+DB_TO_DROP = 'sport'  # Nom de la base à supprimer
 
 def main():
     # Connexion à 'postgres' avec AUTOCOMMIT (obligatoire pour DROP DATABASE)

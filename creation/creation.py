@@ -5,7 +5,7 @@ USER = 'postgres'
 PASSWORD = ''
 HOST = '127.0.0.1'
 PORT = 5434
-DB_TO_CREATE = 'sport'  # Nom de la base à créer
+DB_TO_CREATE = 'sport' # Nom de la base à créer
 
 def main():
     # On se connecte à la base 'postgres' par défaut avec AUTOCOMMIT
