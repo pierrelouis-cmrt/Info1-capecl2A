@@ -133,7 +133,6 @@ def main():
                                 succes = succes + 1
                             
                             except IntegrityError as e:
-                                # MODIF: Classes d'exception au lieu des codes
                                 if isinstance(e.orig, UniqueViolation):
                                     doublons = doublons + 1
                                 
